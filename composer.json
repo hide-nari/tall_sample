@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/livewire-starter-kit",
+    "name": "hidenari/tall_sample",
     "type": "project",
     "description": "The official Laravel starter kit for Livewire.",
     "keywords": [
