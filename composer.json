@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "hidenari/tall_sample",
+    "name": "hidenari/tall-sample",
     "type": "project",
     "description": "tall sample project.",
     "keywords": [
