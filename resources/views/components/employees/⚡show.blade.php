@@ -7,7 +7,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 new class extends Component {
-    public Employee $employer;
+    public Employee $employee;
     public Collection $departments;
 
     public ?int $id = null;
@@ -23,25 +23,26 @@ new class extends Component {
     #[Validate('required|gte:0')]
     public ?int $department_id;
 
-    public function mount(Employee $employer): void
+
+    public function mount(Employee $employee): void
     {
-        $employer->id ? $this->id = $employer->id : $this->method = 'add';
-        $this->name = $employer->name;
-        $this->email = $employer->email;
-        $this->department_id = $employer->department_id;
+        $employee->id ? $this->id = $employee->id : $this->method = 'add';
+        $this->name = $employee->name;
+        $this->email = $employee->email;
+        $this->department_id = $employee->department_id;
         $this->departments = Department::all();;
     }
 
     public function add(): void
     {
         $this->validate();
-        $employer = Employee::create([
-            'name'          => $this->pull('name'),
-            'email'         => $this->pull('email'),
+        $employee = Employee::create([
+            'name' => $this->pull('name'),
+            'email' => $this->pull('email'),
             'department_id' => $this->pull('department_id'),
         ]);
         Flux::toast(
-            text: "created $employer->name record.",
+            text: "created $employee->name record.",
             variant: 'success'
         );
     }
@@ -50,8 +51,8 @@ new class extends Component {
     {
         $this->validate();
         Employee::find($this->id)->update([
-            'name'          => $this->name,
-            'email'         => $this->email,
+            'name' => $this->name,
+            'email' => $this->email,
             'department_id' => $this->department_id,
         ]);
         Flux::toast(

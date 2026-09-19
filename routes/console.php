@@ -10,18 +10,22 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('cli:department_add', function () {
-    Department::create(
-        [
-            'name' => 'CLI make dept:'.now(),
-        ]
-    );
+    for ($i = 0; $i < 10; $i++) {
+        Department::create(
+            [
+                'name' => 'CLI make dept:'.now(),
+            ]
+        );
+    }
 })->purpose('Add department sample record');
 
 Artisan::command('cli:employee_add', function () {
-    Employee::create(
-        [
-            'name' => 'CLI make name:'.now(),
-            'email' => 'test'.random_int(10, 99).'@test.com',
-        ]
-    );
+    for ($i = 0; $i < 10; $i++) {
+        Employee::create(
+            [
+                'name' => 'CLI make name:'.now(),
+                'email' => 'test'.random_int(10, 99).'@test.com',
+            ]
+        );
+    }
 })->purpose('Add employee sample record');
