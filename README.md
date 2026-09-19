@@ -2,7 +2,8 @@ Tall Sample.
 
 ## About this package
 
-Tall Sample Program.
+TALL Sample Program with department model and employee model.
+
 [code sample](https://github.com/hide-nari/tall_sample/blob/main/Sample.md)
 
 ## Update Rules
