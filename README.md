@@ -3,6 +3,7 @@ Tall Sample.
 ## About this package
 
 Tall Sample Program.
+[code sample](https://github.com/hide-nari/tall_sample/blob/main/Sample.md)
 
 ## Update Rules
 
