@@ -2,7 +2,7 @@
     "$schema": "https://getcomposer.org/schema.json",
     "name": "hidenari/tall_sample",
     "type": "project",
-    "description": "The official Laravel starter kit for Livewire.",
+    "description": "tall sample project.",
     "keywords": [
         "laravel",
         "framework"
