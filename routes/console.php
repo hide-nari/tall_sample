@@ -29,3 +29,5 @@ Artisan::command('cli:employee_add', function () {
         );
     }
 })->purpose('Add employee sample record');
+
+Schedule::command('cli:employee_add')->dailyAt('0:25');
