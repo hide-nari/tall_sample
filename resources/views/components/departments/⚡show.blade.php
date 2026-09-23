@@ -33,7 +33,7 @@ new class extends Component {
     public function update(): void
     {
         $this->validate();
-        Department::find($this->id)->update([
+        Department::findOrFail($this->id)->update([
             'name' => $this->name,
         ]);
         Flux::toast(

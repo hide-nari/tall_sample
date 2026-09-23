@@ -10,7 +10,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('cli:department_add', function () {
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < 26; $i++) {
         Department::create(
             [
                 'name' => 'CLI make dept:'.now(),
@@ -20,7 +20,7 @@ Artisan::command('cli:department_add', function () {
 })->purpose('Add department sample record');
 
 Artisan::command('cli:employee_add', function () {
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < 26; $i++) {
         Employee::create(
             [
                 'name' => 'CLI make name:'.now(),
@@ -30,4 +30,4 @@ Artisan::command('cli:employee_add', function () {
     }
 })->purpose('Add employee sample record');
 
-Schedule::command('cli:employee_add')->dailyAt('0:25');
+//Schedule::command('cli:employee_add')->dailyAt('0:25');

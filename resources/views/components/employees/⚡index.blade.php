@@ -46,7 +46,7 @@ new class extends Component {
 
     public function delete($employerId): void
     {
-        Employee::find($employerId)->delete();
+        Employee::findOrFail($employerId)->delete();
         Flux::toast(
             text: 'delete employer record.',
             variant: 'danger'

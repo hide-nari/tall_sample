@@ -50,7 +50,7 @@ new class extends Component {
     public function update(): void
     {
         $this->validate();
-        Employee::find($this->id)->update([
+        Employee::findOrFail($this->id)->update([
             'name' => $this->name,
             'email' => $this->email,
             'department_id' => $this->department_id,
@@ -68,7 +68,7 @@ new class extends Component {
         <flux:input wire:model="name" label="Name:"></flux:input>
         <flux:input wire:model="email" label="Email:"/>
         <flux:select wire:model="department_id" label="Department:">
-            <flux:select.option value="-1">----</flux:select.option>
+            <flux:select.option value="0">----</flux:select.option>
             @foreach($departments as $department)
                 <flux:select.option value="{{ $department->id }}">{{ $department->name }}</flux:select.option>
             @endforeach
