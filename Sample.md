@@ -42,7 +42,7 @@ new class extends Component {
 
     public function delete($departmentId): void
     {
-        Department::find($departmentId)->delete();
+        Department::findOrFail($departmentId)->delete();
         Flux::toast(
             text: 'delete department record.',
             variant: 'danger'
@@ -207,7 +207,7 @@ new class extends Component {
     public function update(): void
     {
         $this->validate();
-        Department::find($this->id)->update([
+        Department::findOrFail($this->id)->update([
             'name' => $this->name,
         ]);
         Flux::toast(
