@@ -23,7 +23,7 @@ Artisan::command('cli:employee_add', function () {
     for ($i = 0; $i < 26; $i++) {
         Employee::create(
             [
-                'name' => 'CLI make name:'.now(),
+                'name' => 'CLI make employee:'.now(),
                 'email' => 'test'.random_int(10, 99).'@test.com',
             ]
         );
