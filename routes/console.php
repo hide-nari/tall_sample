@@ -9,21 +9,21 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('cli:department_add', function () {
+Artisan::command('add:department', function () {
     for ($i = 0; $i < 26; $i++) {
         Department::create(
             [
-                'name' => 'CLI make dept:'.now(),
+                'name' => '営業'.$i.'部',
             ]
         );
     }
 })->purpose('Add department sample record');
 
-Artisan::command('cli:employee_add', function () {
+Artisan::command('add:employee', function () {
     for ($i = 0; $i < 26; $i++) {
         Employee::create(
             [
-                'name' => 'CLI make employee:'.now(),
+                'name' => 'test user:'.$i,
                 'email' => 'test'.random_int(10, 99).'@test.com',
             ]
         );
