@@ -44,12 +44,12 @@ new class extends Component {
 };
 ?>
 
-<script>
-    this.$js.increment = () => {
-        alert('increment')
-        console.log('increment')
-    }
-</script>
+{{--<script>--}}
+{{--    this.$js.increment = () => {--}}
+{{--        alert('increment')--}}
+{{--        console.log('increment')--}}
+{{--    }--}}
+{{--</script>--}}
 
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
     <flux:card class="lg:w-1/3">
@@ -67,7 +67,7 @@ new class extends Component {
             Back
         </flux:button>
     </flux:card>
-    <div>
-        <button wire:click="$js.increment">+</button>
-    </div>
+{{--    <div>--}}
+{{--        <button wire:click="$js.increment">+</button>--}}
+{{--    </div>--}}
 </div>
