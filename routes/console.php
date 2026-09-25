@@ -24,7 +24,7 @@ Artisan::command('add:employee', function () {
         Employee::create(
             [
                 'name' => 'test user:'.$i,
-                'email' => 'test'.random_int(10, 99).'@test.com',
+                'email' => 'test'.$i.'@test.com',
             ]
         );
     }
