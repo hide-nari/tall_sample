@@ -65,7 +65,7 @@ new class extends Component {
 
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
     <flux:card class="lg:w-1/3 space-y-4">
-        <flux:input wire:model="name" label="Name:"></flux:input>
+        <flux:input wire:model="name" label="Name:"/>
         <flux:input wire:model="email" label="Email:"/>
         <flux:select wire:model="department_id" label="Department:">
             <flux:select.option value="0">----</flux:select.option>

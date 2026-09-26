@@ -117,9 +117,9 @@ new class extends Component {
                                    wire:click="sort('department_id')">
                     Department
                 </flux:table.column>
-{{--                <flux:table.column>--}}
-{{--                    Image--}}
-{{--                </flux:table.column>--}}
+                <flux:table.column>
+                    Image
+                </flux:table.column>
 
                 <flux:table.column sortable
                                    :sorted="$sortBy === 'created_at'"
@@ -165,21 +165,21 @@ new class extends Component {
                         <flux:table.cell>
                             {{ $employee->department->name ?? '' }}
                         </flux:table.cell>
-{{--                        <flux:table.cell>--}}
-{{--                            <div class="flex">--}}
-{{--                                @if($employee->image)--}}
-{{--                                    <flux:avatar src="{{ Storage::url($employee->image) }}"/>--}}
-{{--                                @else--}}
-{{--                                    <flux:avatar icon="user" color="auto" color:seed="{{ $employee->id }}"/>--}}
-{{--                                @endif--}}
-{{--                                @unless($employee->deleted_at)--}}
-{{--                                    <flux:modal.trigger :name="'image_upload_'.$employee->id">--}}
-{{--                                        <flux:button icon="cloud-arrow-up" variant="ghost" icon:variant="outline"/>--}}
-{{--                                    </flux:modal.trigger>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
+                        <flux:table.cell>
+                            <div class="flex">
+                                @if($employee->image)
+                                    <flux:avatar src="{{ Storage::url($employee->image) }}"/>
+                                @else
+                                    <flux:avatar icon="user" color="auto" color:seed="{{ $employee->id }}"/>
+                                @endif
+                                @unless($employee->deleted_at)
+                                    <flux:modal.trigger :name="'image_upload_'.$employee->id">
+                                        <flux:button icon="cloud-arrow-up" variant="ghost" icon:variant="outline"/>
+                                    </flux:modal.trigger>
+                                @endif
+                            </div>
 
-{{--                        </flux:table.cell>--}}
+                        </flux:table.cell>
                         <flux:table.cell>{{ $employee->created_at }}</flux:table.cell>
                         <flux:table.cell>{{ $employee->updated_at }}</flux:table.cell>
                         <flux:table.cell align="center">
