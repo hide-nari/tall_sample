@@ -10,7 +10,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('add:department', function () {
-    for ($i = 0; $i < 26; $i++) {
+    for ($i = 1; $i < 26; $i++) {
         Department::create(
             [
                 'name' => '営業'.$i.'部',
@@ -20,11 +20,12 @@ Artisan::command('add:department', function () {
 })->purpose('Add department sample record');
 
 Artisan::command('add:employee', function () {
-    for ($i = 0; $i < 26; $i++) {
+    for ($i = 1; $i < 26; $i++) {
         Employee::create(
             [
                 'name' => 'test user:'.$i,
                 'email' => 'test'.$i.'@test.com',
+                'department_id' => Department::get()->random()->id,
             ]
         );
     }
