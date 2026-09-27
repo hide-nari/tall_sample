@@ -54,18 +54,6 @@ new class extends Component {
             variant: 'danger'
         );
     }
-
-    public function imageUpload(Employee $employee): void
-    {
-        $this->validate();
-        $employee->update([
-            'image' => $this->pull('image')->store('images'),
-        ]);
-        Flux::toast(
-            text: 'Image updated.',
-            variant: 'success'
-        );
-    }
 };
 ?>
 
@@ -90,7 +78,6 @@ new class extends Component {
     </flux:modal>
 
     <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-        {{--        <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20"/>--}}
         <flux:table>
             <flux:table.columns>
                 <flux:table.column sortable
@@ -142,20 +129,6 @@ new class extends Component {
             </flux:table.columns>
             <flux:table.rows>
                 @foreach($this->employees as $employee)
-                    <flux:modal :name="'image_upload_'.$employee->id" class="w-96">
-                        <div class="space-y-4">
-                            @if ($employee->image)
-                                <img src="{{ Storage::url($employee->image) }}" width="200px">
-                                <flux:separator/>
-                            @endif
-                            @if ($image)
-                                <img src="{{ $image->temporaryUrl() }}" width="200px">
-                            @endif
-                            <flux:input type="file" wire:model="image" label="Image:"/>
-                            <flux:button wire:click="imageUpload({{ $employee }})">Upload</flux:button>
-                        </div>
-                    </flux:modal>
-
                     <flux:table.row :key="$employee->id" class="hover:bg-zinc-100 dark:hover:bg-zinc-700">
                         <flux:table.cell align="center">{{ $employee->id }}</flux:table.cell>
                         <flux:table.cell>
@@ -173,11 +146,6 @@ new class extends Component {
                                     <flux:avatar src="{{ Storage::url($employee->image) }}"/>
                                 @else
                                     <flux:avatar icon="user" color="auto" color:seed="{{ $employee->id }}"/>
-                                @endif
-                                @unless($employee->deleted_at)
-                                    <flux:modal.trigger :name="'image_upload_'.$employee->id">
-                                        <flux:button icon="cloud-arrow-up" variant="ghost" icon:variant="outline"/>
-                                    </flux:modal.trigger>
                                 @endif
                             </div>
 

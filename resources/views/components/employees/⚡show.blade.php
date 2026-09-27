@@ -5,8 +5,11 @@ use App\Models\Employee;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 new class extends Component {
+    use WithFileUploads;
+
     public Employee $employee;
     public Collection $departments;
 
@@ -23,6 +26,7 @@ new class extends Component {
     #[Validate('required|gte:0')]
     public ?int $department_id;
 
+    public $image;
 
     public function mount(Employee $employee): void
     {
@@ -60,6 +64,15 @@ new class extends Component {
             variant: 'success'
         );
     }
+
+    public function imageUpload(Employee $employee): void
+    {
+        $this->validate();
+        $employee->update([
+            'image' => $this->pull('image')->store('images'),
+        ]);
+        $this->redirect(route('employees.index'));
+    }
 };
 ?>
 
@@ -85,4 +98,31 @@ new class extends Component {
             <flux:button href="{{ route('employees.index') }}" variant="filled">Back</flux:button>
         </div>
     </flux:card>
+    @if($this->method !== 'add')
+        <flux:card class="lg:w-1/3 space-y-4">
+            @if($employee->image)
+                <flux:text class="text-base">Before:</flux:text>
+                <img src="{{ Storage::url($employee->image) }}" width="100px">
+                <flux:separator/>
+            @endif
+            @if ($image)
+                <flux:text class="text-base">After:</flux:text>
+                <img src="{{ $image->temporaryUrl() }}" width="100px">
+                <flux:separator/>
+                <div class="mt-6">
+                    <flux:button
+                        wire:click="imageUpload({{ $employee }})"
+                        variant="primary"
+                        class="mr-2"
+                    >{{ 'ImageUpdate' }}
+                    </flux:button>
+                </div>
+            @else
+                <flux:input type="file" wire:model="image" label="Image:"/>
+            @endif
+            <div class="mt-6">
+                <flux:button href="{{ route('employees.index') }}" variant="filled">Back</flux:button>
+            </div>
+        </flux:card>
+    @endif
 </div>
