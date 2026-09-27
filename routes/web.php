@@ -13,8 +13,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('department.show');
     Route::livewire('/employees', 'employees')
         ->name('employees.index');
+    Route::livewire('/employee/image/{employee?}', 'employees.image')
+        ->name('employee.image');
     Route::livewire('/employee/{employee?}', 'employees.show')
-        ->name('employees.show');
+        ->name('employee.show');
 });
 
 require __DIR__.'/settings.php';
