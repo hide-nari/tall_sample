@@ -39,6 +39,8 @@ new class extends Component {
     public function delete($departmentId): void
     {
         Department::findOrFail($departmentId)->delete();
+        $this->resetPage();
+
         Flux::toast(
             text: 'delete department record.',
             variant: 'danger'
