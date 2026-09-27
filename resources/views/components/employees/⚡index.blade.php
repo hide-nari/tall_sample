@@ -34,7 +34,7 @@ new class extends Component {
             ->paginate(10);
     }
 
-    public function sort($column): void
+    public function sort(string $column): void
     {
         if ($this->sortBy === $column) {
             $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
@@ -44,19 +44,21 @@ new class extends Component {
         }
     }
 
-    public function delete($employerId): void
+    public function delete(string $employeeId): void
     {
-        Employee::findOrFail($employerId)->delete();
+        Employee::findOrFail($employeeId)->delete();
+        $this->resetPage();
+
         Flux::toast(
-            text: 'delete employer record.',
+            text: 'delete employee record.',
             variant: 'danger'
         );
     }
 
-    public function imageUpload(Employee $employer): void
+    public function imageUpload(Employee $employee): void
     {
         $this->validate();
-        $employer->update([
+        $employee->update([
             'image' => $this->pull('image')->store('images'),
         ]);
         Flux::toast(
