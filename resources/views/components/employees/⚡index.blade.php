@@ -6,20 +6,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 new class extends Component {
     use WithPagination;
-    use WithFileUploads;
 
     public $sortBy = 'id';
     public $sortDirection = 'asc';
     public $search = '';
     public $trashViewFlg = false;
-
-    #[Validate('required')]
-    public $image;
 
     #[Computed]
     public function employees(): LengthAwarePaginator
